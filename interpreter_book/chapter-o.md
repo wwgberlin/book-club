@@ -1,5 +1,7 @@
 # Chapter 0 - over view of an interpreter
 
+<a name="top"></a>
+
 ## What is an Interpreter
 
 ### Wikipedia
@@ -159,3 +161,7 @@ Calling functions:
 ```go
 add(1, 2);
 ```
+
+***
+
+|  [Back to Book Main Page](./README.md) | [Back to Top](#top) | [Next chapter](chapter-1.md) |

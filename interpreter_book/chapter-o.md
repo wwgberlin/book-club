@@ -187,7 +187,7 @@ add(1, 2);
 **Q:** In go is it compiled into machine code or itermediate? Runtime in binary? what process is happening here?
 **A:** yes runtime is included needed for gc. Static dynamic linking is related to size of binary
 **T:** For GO Cross compilation required for running on different platrforms(ie arm)
-**T:** Optimisation process - translation happens once, does also not need to be even onmachine of ther user so plenty of time for optimisation. In interpreter optimisations need to be more considered because they affect execution speed.
+**T:** Optimisation process - in case of a compiler, translation happens once and does not need to even be on the machine of ther user. So there is plenty of time for optimisation. In an interpreter optimisations need to be more considered because they affect execution speed.
 **Q:** Will an interpreter not execute on syntax error, but will run if other errors are present and only exit when it hits the error?
 **T:** Are we talking runtime errors or general errors?
 **Q:** Will lexing and parsing happen first for the whole code or scope by scope for Monkey - the bets are on

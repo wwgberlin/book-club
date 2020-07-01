@@ -38,7 +38,6 @@ There are many different programming languages and many different use cases for 
 
 *Both compilers and interpreters convert source code (text files) into tokens, both may generate a parse tree, and both may generate immediate instructions. The basic difference is that a compiler system, including a (built in or separate) linker, generates a stand alone machine code program, while an interpreter system instead performs the actions described by the high level program.* (https://www.geeksforgeeks.org/compiler-vs-interpreter-2/)
 
-![Diagram for compiler versus interpreter](./assets/compiler_versus_interpreter.jpg)
 
 An interpreter functions like a human interpreter who repeats the spoken word phrase by phrase into a different language.
 A compiler on the other hand can be compared to a translator, who takes a written text, translates it into a different language and distributes the translated text.

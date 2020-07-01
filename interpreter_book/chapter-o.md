@@ -1,4 +1,4 @@
-# Chapter 0 - over view of an interpreter
+# Chapter 0 - overview of an interpreter
 
 <a name="top"></a>
 
@@ -41,7 +41,7 @@ There are many different programming languages and many different use cases for 
 ![Diagram for compiler versus interpreter](./assets/compiler_versus_interpreter.jpg)
 
 An interpreter functions like a human interpreter who repeats the spoken word phrase by phrase into a different language.
-A compiler on the other hand can be compared to a translator, who takes a written text, translates it into a different language and distributes the text.
+A compiler on the other hand can be compared to a translator, who takes a written text, translates it into a different language and distributes the translated text.
 
 **Both types have different strengths and weaknesses:**
 
@@ -58,7 +58,7 @@ A compiler on the other hand can be compared to a translator, who takes a writte
 | Debugging                            | Easier -> errors are thrown after each line| Harder, errors are hard to locate                                                   |
 |                                      | → Good for cross platform code             | → good for efficient code                                                           |
 
-An approach that unites some advantages of both is the Just in Time compiler (JIT compiler): In this case the code is compiled just before it is executed. The compiler needs to be present on the user’s machine (just like an interpreter).
+An approach that unites some advantages of both is the Just in Time compiler (JIT compiler): In this case the code is compiled just before it is executed. The JIT compiler needs to be present on the user’s machine (just like an interpreter).
 
 It may use the source code directly (like the V8 engine for javascript) or a intermediate representation of the program in byte code (like JAVA).
 https://en.wikipedia.org/wiki/Just-in-time_compilation 
@@ -72,12 +72,25 @@ https://en.wikipedia.org/wiki/Bytecode
 
 **Both:** Javascript
 
+
+
 ## Breaking it down piece by piece
 
 - ### Lexer (also called tokenizer or scanner)
 
 *“...the process of **converting a sequence of characters** (such as in a computer program or web page) **into a sequence of tokens** (strings with an assigned and thus identified meaning).”*
 https://en.wikipedia.org/wiki/Lexical_analysis
+
+In the simplest form a lexer reads a string and splits it into substrings separated by whitespace (which characters are considered whitespace may vary). Each substring can then be analyzed and converted into a token:
+
+-  a value (3, "dog")
+- a reserved keyword (var, func, ....)
+- a special character (COLON, OPENING_PARENTHESIS, ...)
+- ....
+
+Depending on the programming language, it might need to consider some context around the substring to classify the tokens correctly. 
+
+
 
 - ### Parser
 
@@ -94,12 +107,16 @@ In short: A parser turns its input into a data structure that represents the inp
 
 Evaluate the structural representation of the input to determine the output.
 
+
+
 ## Interpreters can also include compiling steps
 
 *“Before the interpreter takes over, Python performs three other steps: **lexing, parsing, and compiling**. Together, these steps transform the programmer's source code from lines of text into structured code objects containing instructions that the interpreter can understand. **The interpreter's job is to take these code objects and follow the instructions.***
 
 *You may be surprised to hear that compiling is a step in executing Python code at all. Python is often called an "interpreted" language like Ruby or Perl, as opposed to a "compiled" language like C or Rust. However, this terminology isn't as precise as it may seem. **Most interpreted languages, including Python, do involve a compilation step**. The reason Python is called "interpreted" is that the compilation step does relatively less work (and the interpreter does relatively more) than in a compiled language.”*
 http://aosabook.org/en/500L/a-python-interpreter-written-in-python.html
+
+
 
 ## Why Go
 
@@ -108,6 +125,8 @@ http://aosabook.org/en/500L/a-python-interpreter-written-in-python.html
 - Thorough standard library
 - Simplicity
 - Easy to map to other languages
+
+
 
 ## The Monkey Programming Language
 

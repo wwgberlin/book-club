@@ -184,15 +184,15 @@ add(1, 2);
 
 ## Discussion Points
 
-**Q:** In go is it compiled into machine code or itermediate? Runtime in binary? what process is happening here?
-**A:** yes runtime is included needed for gc. Static dynamic linking is related to size of binary
-**T:** For GO Cross compilation required for running on different platrforms(ie arm)
-**T:** Optimisation process - in case of a compiler, translation happens once and does not need to even be on the machine of ther user. So there is plenty of time for optimisation. In an interpreter optimisations need to be more considered because they affect execution speed.
-**Q:** Will an interpreter not execute on syntax error, but will run if other errors are present and only exit when it hits the error?
-**T:** Are we talking runtime errors or general errors?
-**Q:** Will lexing and parsing happen first for the whole code or scope by scope for Monkey - the bets are on
-**A:** Python - seems to go expression by expression and only errors when it reaches the error, js seems to go scope by scope
-**T:** Lets later on benchmark or own interpreter and see if we can optimize it by interpreting “on demand” (not all at once, but statement by statement)
+**Q:** In go is it compiled into machine code or itermediate? Runtime in binary? what process is happening here?    
+**A:** yes runtime is included needed for gc. Static dynamic linking is related to size of binary    
+**T:** For GO Cross compilation required for running on different platrforms(ie arm)    
+**T:** Optimisation process - in case of a compiler, translation happens once and does not need to even be on the machine of ther user. So there is plenty of time for optimisation. In an interpreter optimisations need to be more considered because they affect execution speed.    
+**Q:** Will an interpreter not execute on syntax error, but will run if other errors are present and only exit when it hits the error?    
+**T:** Are we talking runtime errors or general errors?    
+**Q:** Will lexing and parsing happen first for the whole code or scope by scope for Monkey - the bets are on    
+**A:** Python - seems to go expression by expression and only errors when it reaches the error, js seems to go scope by scope    
+**T:** Lets later on benchmark or own interpreter and see if we can optimize it by interpreting “on demand” (not all at once, but statement by statement)    
 
 ## Additional Resources
 

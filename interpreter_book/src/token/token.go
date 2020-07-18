@@ -11,6 +11,18 @@ func NewToken(tok TokenType, ch byte) Token {
 	return Token{Type: tok, Literal: string(ch)}
 }
 
+var keywords = map[string]TokenType{
+	"fn":  FUNCTION,
+	"let": LET,
+}
+
+func LookUpIdent(ident string) TokenType {
+	if t, ok := keywords[ident]; ok {
+		return t
+	}
+	return IDENT
+}
+
 const (
 	ILLEGAL = TokenType("ILLEGAL")
 	EOF     = TokenType("EOF")

@@ -174,3 +174,32 @@ func Test_NextToken_truefalseifelse(t *testing.T) {
 		}
 	}
 }
+
+func Test_NextToken_double_char_spec_characters(t *testing.T) {
+	input := `10 == 10;
+    10 != 9;`
+	cases := []struct {
+		expectedType    token.TokenType
+		expectedLiteral string
+	}{
+		{token.INT, "10"},
+		{token.EQ, "=="},
+		{token.INT, "10"},
+		{token.SEMICOLON, ";"},
+		{token.INT, "10"},
+		{token.NOT_EQ, "!="},
+		{token.INT, "9"},
+		{token.SEMICOLON, ";"},
+	}
+	l := New(input)
+
+	for _, tt := range cases {
+		token := l.NextToken()
+		if token.Type != tt.expectedType {
+			t.Errorf("Wrong token type: expected: '%v', got: '%v'", tt.expectedType, token.Type)
+		}
+		if token.Literal != tt.expectedLiteral {
+			t.Errorf("Wrong token literal: expected: '%v', got: '%v'", tt.expectedLiteral, token.Literal)
+		}
+	}
+}

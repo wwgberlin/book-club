@@ -38,6 +38,10 @@ const (
 	ASSIGN = TokenType("=")
 	PLUS   = TokenType("+")
 
+	// double-char
+	EQ     = TokenType("==")
+	NOT_EQ = TokenType("!=")
+
 	// Delimiters
 	COMMA     = TokenType(",")
 	SEMICOLON = TokenType(";")

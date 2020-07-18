@@ -24,7 +24,12 @@ func (l *Lexer) NextToken() token.Token {
 
 	switch l.ch {
 	case '=':
-		tok = token.NewToken(token.ASSIGN, l.ch)
+		if l.peekChar() == '=' {
+			tok = token.Token{token.EQ, "=="}
+			l.readChar()
+		} else {
+			tok = token.NewToken(token.ASSIGN, l.ch)
+		}
 	case '+':
 		tok = token.NewToken(token.PLUS, l.ch)
 	case '{':
@@ -40,7 +45,12 @@ func (l *Lexer) NextToken() token.Token {
 	case ';':
 		tok = token.NewToken(token.SEMICOLON, l.ch)
 	case '!':
-		tok = token.NewToken(token.BANG, l.ch)
+		if l.peekChar() == '=' {
+			tok = token.Token{token.NOT_EQ, "!="}
+			l.readChar()
+		} else {
+			tok = token.NewToken(token.BANG, l.ch)
+		}
 	case '-':
 		tok = token.NewToken(token.MINUS, l.ch)
 	case '/':
@@ -109,4 +119,12 @@ func (l *Lexer) readChar() {
 	}
 	l.position = l.readPosition
 	l.readPosition += 1
+}
+
+func (l *Lexer) peekChar() byte {
+	if l.readPosition >= len(l.input) {
+		return 0
+	} else {
+		return l.input[l.readPosition]
+	}
 }

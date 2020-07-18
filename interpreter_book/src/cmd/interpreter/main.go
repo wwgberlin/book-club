@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/Asalle/monkey-interpreter/repl"
+	"github.com/wwgberlin/book-club/interpreter_book/src/repl"
 	"os"
 	"os/user"
 )

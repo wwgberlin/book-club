@@ -1,7 +1,7 @@
 package lexer
 
 import (
-	"github.com/Asalle/monkey-interpreter/token"
+	"github.com/wwgberlin/book-club/interpreter_book/src/token"
 	"testing"
 )
 

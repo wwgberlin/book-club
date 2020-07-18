@@ -3,8 +3,8 @@ package repl
 import (
 	"bufio"
 	"fmt"
-	"github.com/Asalle/monkey-interpreter/lexer"
-	"github.com/Asalle/monkey-interpreter/token"
+	"github.com/wwgberlin/book-club/interpreter_book/src/lexer"
+	"github.com/wwgberlin/book-club/interpreter_book/src/token"
 	"io"
 )
 

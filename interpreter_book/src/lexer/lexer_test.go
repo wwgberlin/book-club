@@ -22,7 +22,7 @@ func Test_NextToken(t *testing.T) {
 		{token.COMMA, ","},
 	}
 
-	l := MakeLexer(input)
+	l := New(input)
 
 	for _, tt := range cases {
 		token := l.NextToken()

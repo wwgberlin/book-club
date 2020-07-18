@@ -7,6 +7,10 @@ type Token struct {
 	Literal string
 }
 
+func NewToken(tok TokenType, ch byte) Token {
+	return Token{Type: tok, Literal: string(ch)}
+}
+
 const (
 	ILLEGAL = TokenType("ILLEGAL")
 	EOF     = TokenType("EOF")

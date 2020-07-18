@@ -12,8 +12,13 @@ func NewToken(tok TokenType, ch byte) Token {
 }
 
 var keywords = map[string]TokenType{
-	"fn":  FUNCTION,
-	"let": LET,
+	"fn":     FUNCTION,
+	"let":    LET,
+	"if":     IF,
+	"else":   ELSE,
+	"true":   TRUE,
+	"false":  FALSE,
+	"return": RETURN,
 }
 
 func LookUpIdent(ident string) TokenType {
@@ -50,4 +55,9 @@ const (
 	// Keywords
 	FUNCTION = TokenType("FUNCTION")
 	LET      = TokenType("LET")
+	IF       = TokenType("if")
+	ELSE     = TokenType("else")
+	TRUE     = TokenType("true")
+	FALSE    = TokenType("false")
+	RETURN   = TokenType("return")
 )

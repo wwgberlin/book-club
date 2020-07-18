@@ -133,3 +133,44 @@ func Test_NextToken_SpecialCharaters(t *testing.T) {
 		}
 	}
 }
+
+func Test_NextToken_truefalseifelse(t *testing.T) {
+	input := `if (5 < 10) {
+    return true;
+} else {
+    return false;
+}`
+	cases := []struct {
+		expectedType    token.TokenType
+		expectedLiteral string
+	}{
+		{token.IF, "if"},
+		{token.LPAREN, "("},
+		{token.INT, "5"},
+		{token.LT, "<"},
+		{token.INT, "10"},
+		{token.RPAREN, ")"},
+		{token.LBRACE, "{"},
+		{token.RETURN, "return"},
+		{token.TRUE, "true"},
+		{token.SEMICOLON, ";"},
+		{token.RBRACE, "}"},
+		{token.ELSE, "else"},
+		{token.LBRACE, "{"},
+		{token.RETURN, "return"},
+		{token.FALSE, "false"},
+		{token.SEMICOLON, ";"},
+		{token.RBRACE, "}"},
+	}
+	l := New(input)
+
+	for _, tt := range cases {
+		token := l.NextToken()
+		if token.Type != tt.expectedType {
+			t.Errorf("Wrong token type: expected: '%v', got: '%v'", tt.expectedType, token.Type)
+		}
+		if token.Literal != tt.expectedLiteral {
+			t.Errorf("Wrong token literal: expected: '%v', got: '%v'", tt.expectedLiteral, token.Literal)
+		}
+	}
+}

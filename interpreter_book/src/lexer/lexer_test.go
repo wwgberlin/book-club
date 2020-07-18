@@ -99,3 +99,37 @@ let result = add(five, ten);
 		}
 	}
 }
+
+func Test_NextToken_SpecialCharaters(t *testing.T) {
+	input := `!-/*5;
+5 < 10 > 5;
+`
+	cases := []struct {
+		expectedType    token.TokenType
+		expectedLiteral string
+	}{
+		{token.BANG, "!"},
+		{token.MINUS, "-"},
+		{token.SLASH, "/"},
+		{token.ASTERISK, "*"},
+		{token.INT, "5"},
+		{token.SEMICOLON, ";"},
+		{token.INT, "5"},
+		{token.LT, "<"},
+		{token.INT, "10"},
+		{token.GT, ">"},
+		{token.INT, "5"},
+		{token.SEMICOLON, ";"},
+	}
+	l := New(input)
+
+	for _, tt := range cases {
+		token := l.NextToken()
+		if token.Type != tt.expectedType {
+			t.Errorf("Wrong token type: expected: '%v', got: '%v'", tt.expectedType, token.Type)
+		}
+		if token.Literal != tt.expectedLiteral {
+			t.Errorf("Wrong token literal: expected: '%v', got: '%v'", tt.expectedLiteral, token.Literal)
+		}
+	}
+}

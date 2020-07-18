@@ -40,6 +40,12 @@ const (
 	RPAREN    = TokenType(")")
 	LBRACE    = TokenType("{")
 	RBRACE    = TokenType("}")
+	BANG      = TokenType("!")
+	MINUS     = TokenType("-")
+	SLASH     = TokenType("/")
+	ASTERISK  = TokenType("*")
+	LT        = TokenType("<")
+	GT        = TokenType(">")
 
 	// Keywords
 	FUNCTION = TokenType("FUNCTION")

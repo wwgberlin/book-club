@@ -15,3 +15,7 @@ race:
 .PHONY: fmt
 fmt:
 	gofmt -s -w ./...
+
+.PHONY: monkey
+monkey:
+	go build -o monkey ./cmd/interpreter

@@ -1,4 +1,4 @@
-# Women Who Go Bookclub
+# Women Who Go Bookclub [![Build Status](https://travis-ci.org/Asalle/book-club.svg?branch=master)](https://travis-ci.org/Asalle/book-club)
 
 This repo is a collection of resources collected during the Women Who Go Berlin Book club.
 

@@ -1,0 +1,21 @@
+language: go
+
+os:
+  - linux
+
+dist: bionic
+
+go:
+  - 1.14.x
+
+env:
+  global:
+    - GO111MODULE=on
+  jobs:
+    - GOTESTFLAGS=""
+    - GOTESTFLAGS="-race"
+
+script:
+  - cd interpreter_book/src
+  - make monkey
+  - make test

@@ -3,8 +3,8 @@
 
 ## A First Intuitive Grammar in BNF
 
-This is a first grammar for the subset of the Monkey Programming Language for which a parser is implemented in chapter 2.
-It is rather intuitive and might be helpful to get a first overview of the language.
+*This is a first grammar for the subset of the Monkey Programming Language for which a parser is implemented in chapter 2.
+It is rather intuitive and might be helpful to get a first overview of the language.*
 
 BNF is short for [Backus–Naur form](https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_form). It is a notation for context-free grammars, which is also used for parser generators.
 

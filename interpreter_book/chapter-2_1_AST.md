@@ -154,7 +154,7 @@ Examples:
 
 Structure:
 ```
-<prefix operator><expression>; //the semicolon is wrong?!
+<prefix operator><expression>	//no semicolon !!
 ```
 
 Corresponding Fields of AST Node:

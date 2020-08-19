@@ -97,7 +97,7 @@ That is how **Call Expressions** are now implemented in the parser, but the auth
 
 ```
 <call-expression>         ::= <identifier> LBRACE <comma-separated-expressions> RBRACE |
-                              <function-literal> (<comma-separated-expressions>)
+                              <function-literal> LBRACE <comma-separated-expressions> RBRACE
 ``` 
 
 ### The  Grammar as a whole
@@ -139,7 +139,7 @@ That is how **Call Expressions** are now implemented in the parser, but the auth
                           ::= <identifier> COMMA <comma-separated-identifiers>                      
 
 <call-expression>         ::= <identifier> LBRACE <comma-separated-expressions> RBRACE |
-                              <function-literal> (<comma-separated-expressions>)<comma-separated-expressions> 
+                              <function-literal> LBRACE <comma-separated-expressions> RBRACE
                           ::= <expression> |
                           ::= <expression> COMMA <comma-separated-expressions>  
 ``` 

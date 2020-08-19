@@ -135,7 +135,7 @@ That is how **Call Expressions** are now implemented in the parser, but the auth
 <block-statement>         ::= LBRACE <statement>* RBRACE
 <comma-separated-identifiers>
                           ::= <identifier> |
-                          ::= <identifier> COMMA <comma-separated-identifiers>                      
+                              <identifier> COMMA <comma-separated-identifiers>                      
 
 <call-expression>         ::= <identifier> LBRACE <comma-separated-expressions> RBRACE |
                               <function-literal> LBRACE <comma-separated-expressions> RBRACE

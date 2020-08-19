@@ -78,8 +78,8 @@ return a
 
 Response in REPL:
 ```
->> let x = 5 f(); return a
-let x = 5;f();return a;
+>> let x = 5 f(x); return a
+let x = 5;f(x);return a;
 ```
 
 AST:
@@ -87,7 +87,7 @@ AST:
 ![AST_statements](./assets/AST_statements.png)
 
 ```
-let x = 5 f(); return a
+let x = 5 f(x); return a
 ```
 
 We even habe another type of statements: __Block Statements__, although this kind of statement right now only occurs as part of __If Expressions__ and __Function Literals__, thus feeding a Block Statement into the REPL is answered by an errormessage:

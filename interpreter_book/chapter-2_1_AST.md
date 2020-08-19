@@ -41,8 +41,6 @@ Structure:
 ```
 return <expression>[;]
 ```
-[//]: # (Remark again: the Parser also accepts return statements without a closing semicolon.)
-
 Corresponding Fields of AST Node:
 ```
 ReturnValue Expression
@@ -85,7 +83,93 @@ AST:
 
 ![AST_statements](./assets/AST_statements.png)
 
+```
+let x = 5 f(); return a
+```
+
+We even habe another type of statements: __Block Statements__, although this kind of statement right now only occurs as part of __If Expressions__ and __Function Literals__, thus feeding a Block Statement into the REPL is answered by an errormessage:
+
+```
+>> {let a = 5}
+            __,__
+   .--.  .-"     "-.  .--.
+  / .. \/  .-. .-.  \/ .. \
+ | |  '|  /   Y   \  |'  | |
+ | \   \  \ 0 | 0 /  /   / |
+  \ '- ,\.-"""""""-./, -' /
+   ''-' /_   ^ ^   _\ '-''
+       |  \._   _./  |
+       \   \ '~' /   /
+        '._ '-=-' _.'
+           '-----'
+Woops! We ran into some monkey business here!
+ parser errors:
+        no prefix parse function for { found
+        no prefix parse function for } found
+>> 
+```
+
+Block statements are a series of statements enclosed by an opening { and a closing }.
 
 
+
+## Expressions
+
+### Simple Expressions
+
+Examples:
+```
+thorsten
+false
+12345
+```
+
+
+Corresponding Fields of AST Nodes:
+```
+Value string   //   Identifier
+Value bool     //   Boolean
+Value int64    //   IntegerLiteral
+```
+
+AST:
+
+![AST_simple_expressions](./assets/AST_simple_expressions.png)
+
+
+### Expressions Formed With Prefix- and Infix-Operators
+
+#### Prefix Expressions
+
+
+Examples:
+```
+-5;
+!foobar;
+5 + -10;
+!isGreaterThanZero(2);
+5 + -add(5, 5);
+!-5			// can be stacked; no type checking so far
+```
+
+Structure:
+```
+<prefix operator><expression>; //the semicolon is wrong?!
+```
+
+Corresponding Fields of AST Node:
+```
+Operator string
+Right    Expression
+```
+
+AST:
+
+![AST_prefix_expression](./assets/AST_prefix_expression.png)
+
+
+```
+!foobar 
+```
 
 

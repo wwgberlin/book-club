@@ -246,10 +246,16 @@ Alternative *BlockStatement
 
 AST:
 
-![AST_if_expression](./assets/AST_if_expression.png)
+![AST_if_expression_1](./assets/AST_if_expression_1.png)
 
 ```
-if (x > y) {  return x;}	if (x > y) {  return x; } else {  return y; }
+if (x > y) {  return x;}	
+`
+
+![AST_if_expression_2](./assets/AST_if_expression_2.png)
+
+```
+if (x > y) {  return x; } else {  return y; }
 ```
 
 ![AST_if_expression_else](./assets/AST_if_expression_else.png)

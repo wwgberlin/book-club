@@ -78,7 +78,7 @@ In the parameter list of a function literal, commas are only allowed between ide
 <block-statement>         ::= LBRACE <statement>* RBRACE
 <comma-separated-identifiers>
                           ::= <identifier> |
-                          ::= <identifier> COMMA <comma-separated-identifiers>                      
+                              <identifier> COMMA <comma-separated-identifiers>                      
 ``` 
 
 ### Call Expressions
@@ -89,7 +89,7 @@ In the argument list of a function literal, commas are only allowed between expr
 <call-expression>         ::= <expression> LBRACE [<comma-separated-expressions>] RBRACE
 <comma-separated-expressions> 
                           ::= <expression> |
-                          ::= <expression> COMMA <comma-separated-expressions>  
+                              <expression> COMMA <comma-separated-expressions>  
 ``` 
 That is how **Call Expressions** are now implemented in the parser, but the author seemed to have rather this in mind, where the function expression is restricted to expressions that are identifiers or function literals:
 
@@ -139,8 +139,9 @@ That is how **Call Expressions** are now implemented in the parser, but the auth
 
 <call-expression>         ::= <identifier> LBRACE <comma-separated-expressions> RBRACE |
                               <function-literal> LBRACE <comma-separated-expressions> RBRACE
+<comma-separated-expressions> 
                           ::= <expression> |
-                          ::= <expression> COMMA <comma-separated-expressions>  
+                              <expression> COMMA <comma-separated-expressions>  
 ``` 
 
 

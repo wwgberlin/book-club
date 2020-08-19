@@ -250,7 +250,7 @@ AST:
 
 ```
 if (x > y) {  return x;}	
-`
+```
 
 ![AST_if_expression_2](./assets/AST_if_expression_2.png)
 
@@ -266,8 +266,8 @@ let foobar = if (x > y) { x } else { y };
 
 #### Function Literals
 
-In Monkey a function literal is how we define functions: which parameters they have and what the function does. Function literals look like this:
-parameters are just a list of identifiers that are comma-separated and surrounded by parentheses
+In Monkey a function literal is how we define functions: which parameters they have and what the function does. 
+Parameters are just a list of identifiers that are comma-separated and surrounded by parentheses.
 
 Examples:
 ```

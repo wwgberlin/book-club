@@ -1,4 +1,7 @@
-# Nodes of the Monkey-AST  
+# Nodes of the Monkey-AST
+
+
+*Note: only for the subset of the Monkey Programming Language implemented in chapter 2; there will be four more Node-types implemented in chapter 4.*
 
 *Note: all AST-diagrams are semi-automatically produced by an extension of the packages ast / repl. They show the internal representation of 
 AST-nodes.*

@@ -91,9 +91,8 @@ In the argument list of a function literal, commas are only allowed between expr
                           ::= <expression> |
                           ::= <expression> COMMA <comma-separated-expressions>  
 ``` 
-That is how **Call Expressions** are now implemented in the parser, but the author seemed to have rather this in mind:
+That is how **Call Expressions** are now implemented in the parser, but the author seemed to have rather this in mind, where the function expression is restricted to expressions that are identifiers or function literals:
 
-*Question: should we rather restrict the function expression like this:*
 
 ```
 <call-expression>         ::= <identifier> LBRACE <comma-separated-expressions> RBRACE |

@@ -99,7 +99,7 @@ That is how **Call Expressions** are now implemented in the parser, but the auth
                               <function-literal> LBRACE <comma-separated-expressions> RBRACE
 ``` 
 
-### The  Grammar as a whole
+### The Grammar as a whole
 
 ```
 <program>                 ::=   <statement>*
@@ -145,8 +145,111 @@ That is how **Call Expressions** are now implemented in the parser, but the auth
 ``` 
 
 
-## TODO 
+## A Grammar that helps guide the parser
 
-*next meetup: a Grammar that helps guide the parser*
+### Step1: remove '[]'
 
-     
+#### Changes
+
+from: 
+```
+<return-statement>        ::=   RETURN <expression> [SEMICOLON]
+<let-statement>           ::=   LET <identifier> ASSIGN <expression> [SEMICOLON]
+<expression-statement>    ::=   <expression> [SEMICOLON]
+<if-expression>           ::=   IF LPAREN <expression> RPAREN <block-statement> [ELSE <block-statement>]
+<function-literal>        ::=   FUNCTION LPAREN [<comma-separated-identifiers>] RPAREN <block-statement>
+
+``` 
+to
+```
+<return-statement>        ::=   RETURN <expression> <opt-semicolon>
+<let-statement>           ::=   LET <identifier> ASSIGN <expression> <opt-semicolon>
+<expression-statement>    ::=   <expression> <opt-semicolon>
+<if-expression>           ::=   IF LPAREN <expression> RPAREN <block-statement> |
+                                IF LPAREN <expression> RPAREN <block-statement> ELSE <block-statement>
+<function-literal>        ::=   FUNCTION LPAREN <opt-comma-separated-identifiers> RPAREN <block-statement>
+<opt-semicolon>           ::=   epsilon |
+                                SEMICOLON
+<opt-comma-separated-identifiers>
+                          ::=   epsilon |
+                                <comma-separated-identifiers>
+                            
+``` 
+
+
+### The  Grammar as a whole
+
+```
+<program>                 ::=   <statement>*
+
+<statement>               ::=   <return-statement> |
+                                <let-statement> |
+                                <expression-statement>
+<return-statement>        ::=   RETURN <expression> <opt-semicolon>
+<let-statement>           ::=   LET <identifier> ASSIGN <expression> <opt-semicolon>
+<expression-statement>    ::=   <expression> <opt-semicolon>
+<opt-semicolon>           ::=   epsilon |
+                                SEMICOLON
+                                
+<expression>              ::=   LPAREN <expression> RPAREN |
+                                <identifier> |
+                                <boolean> |
+                                <integer-literal> |
+                                <prefix-expression> |
+                                <infix-expression> |
+                                <if-expression> |
+                                <function-literal> |
+                                <call-expression>                          
+
+<identifier>              ::=   IDENT
+<boolean>                 ::=   TRUE | FALSE
+<integer-literal>         ::=   INT
+
+<prefix-expression>       ::=   <prefix-operator> <expression>
+<infix-expression>        ::=   <expression> <infix-operator> <expression> 
+<prefix-operator>         ::=   BANG | MINUS
+<infix-operator>          ::=   PLUS | MINUS | ASTERISK | SLASH | EQ | NOT_EQ | LT | GT
+
+<if-expression>           ::=   IF LPAREN <expression> RPAREN <block-statement> |
+                                IF LPAREN <expression> RPAREN <block-statement> ELSE <block-statement>
+<function-literal>        ::=   FUNCTION LPAREN <opt-comma-separated-identifiers> RPAREN <block-statement>
+<block-statement>         ::=   LBRACE <statement>* RBRACE
+<opt-comma-separated-identifiers>
+                          ::=   epsilon |
+                                <comma-separated-identifiers> 
+<comma-separated-identifiers>
+                          ::=   <identifier> |
+                                <identifier> COMMA <comma-separated-identifiers>                      
+
+<call-expression>         ::=   <identifier> LBRACE <comma-separated-expressions> RBRACE |
+                                <function-literal> LBRACE <comma-separated-expressions> RBRACE
+<comma-separated-expressions> 
+                          ::=   <expression> |
+                                <expression> COMMA <comma-separated-expressions>  
+                             
+``` 
+
+### Step2: determine (some) FIRST-sets
+
+- as we build a predictive parser
+
+
+```                           
+<expression>  ::=   
+    LPAREN <expression> RPAREN |    FIRST(...)  =   {LPAREN}
+    <identifier> |                  FIRST(...)  =   {IDENT}
+    <boolean> |                     FIRST(...)  =   {TRUE, FALSE}
+    <integer-literal> |             FIRST(...)  =   {INT}
+    <prefix-expression> |           FIRST(...)  =   {BANG, MINUS}
+    <infix-expression> |            FIRST(...)  =   FIRST(<expression>)
+                                                =   {LPAREN, IDENT, TRUE, FALSE, INT, BANG, MINUS, IF, FUNCTION}
+    <if-expression> |               FIRST(...)  =   {IF}
+    <function-literal> |            FIRST(...)  =   {FUNCTION}
+    <call-expression>               FIRST(...)  =   {IDENT, FUNCTION}  
+
+<statement> ::=   
+    <return-statement> |            FIRST(...)  =   {RETURN}
+    <let-statement> |               FIRST(...)  =   {LET}
+    <expression-statement>          FIRST(...)  =   {LPAREN, IDENT, TRUE, FALSE, INT, BANG, MINUS, IF, FUNCTION}
+``` 
+

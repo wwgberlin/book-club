@@ -433,4 +433,9 @@ f() true()  1()
 ```
 
 
+![AST_call_expression_problem_if](./assets/AST_call_expression_problem_if.png)
 
+
+```
+if (1){}()
+```

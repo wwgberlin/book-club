@@ -7,6 +7,7 @@ import (
 	"monkey/parser"
 	"strings"
 	"testing"
+	"runtime/debug"
 )
 
 func TestPanicNotEnoughArguments(t *testing.T) {
@@ -115,6 +116,7 @@ func checkPanic(input string, ast *ast.Program, hasParseErrors bool, t *testing.
 	env := object.NewEnvironment()
 	defer func() { // idea from https://golang.org/doc/effective_go#recover
 		if err := recover(); err != nil {
+			t.Error(string(debug.Stack()))
 			if hasParseErrors {
 				t.Errorf("Panic after parse errors for %q: %q", input, err)
 			} else {

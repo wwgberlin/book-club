@@ -19,20 +19,20 @@ func TestArityCallExpressions(t *testing.T) {
 		errmsg string
 	}{
 		// to be specified: error msg
-		{"let truther = fn(x){false}; truther()", true, "not enough"},
-		{"let id = fn(x){x}; id()", true, "not enough"},
-		{"let add = fn(x,y){x+y}; add(2)", true, "not enough"},
+		{"let truther = fn(x){false}; truther()", true, "Not enough arguments!"},
+		{"let id = fn(x){x}; id()", true, "Not enough arguments!"},
+		{"let add = fn(x,y){x+y}; add(2)", true, "Not enough arguments!"},
 		// regression
 		{"let zero = fn(){0}; zero()", false, ""},
 		{"let truther = fn(x){false}; truther(1)", false, ""},
 		{"let id = fn(x){x}; id(1)", false, ""},
 		{"let add = fn(x,y){x+y}; add(1,2)", false, ""},
 		// to be specified: whether we want an error + error msg
-		{"let zero = fn(){0}; zero(1)", false, ""},
-		{"let zero = fn(){0}; zero(1,2,3)", false, ""},
-		{"let truther = fn(x){false}; truther(1,2)", true, "too many"},
-		{"let id = fn(x){x}; id(1,2)", true, "too many"},
-		{"let add = fn(x,y){x+y}; add(1,2,3)", true, "too many"},
+		{"let zero = fn(){0}; zero(1)", true, "Too many arguments!"},
+		{"let zero = fn(){0}; zero(1,2,3)", true, "Too many arguments!"},
+		{"let truther = fn(x){false}; truther(1,2)", true, "Too many arguments!"},
+		{"let id = fn(x){x}; id(1,2)", true, "Too many arguments!"},
+		{"let add = fn(x,y){x+y}; add(1,2,3)", true, "Too many arguments!"},
 	}
 
 	for _, tt := range tests {

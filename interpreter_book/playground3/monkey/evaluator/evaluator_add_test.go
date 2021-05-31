@@ -10,7 +10,7 @@ import (
 	"testing"
 )
 
-//TODO: specify error messages
+// fixed
 func TestArityCallExpressions(t *testing.T) {
 
 	tests := []struct {

@@ -10,7 +10,7 @@ import (
 	"testing"
 )
 
-//TODO: specify error messages
+// fixed
 func TestArityCallExpressions(t *testing.T) {
 
 	tests := []struct {
@@ -101,7 +101,7 @@ func testErrors(input string, ast *ast.Program, expErr bool, expMsg string, t *t
 
 func TestEvalToBoolConsistency(t *testing.T) {
 
-	env, tests := setupEvalToBoolean()
+	env, tests := specifyEvalToBoolean()
 
 	for _, tt := range tests {
 		env.Set("a", tt.object)
@@ -117,7 +117,7 @@ func TestEvalToBoolConsistency(t *testing.T) {
 
 func TestEvalToBoolCorrectness(t *testing.T) {
 
-	env, tests := setupEvalToBoolean()
+	env, tests := specifyEvalToBoolean()
 
 	for _, tt := range tests {
 		env.Set("a", tt.object)
@@ -144,13 +144,13 @@ func TestEvalToBoolCorrectness(t *testing.T) {
 }
 
 // needs specification
-func setupEvalToBoolean() (*object.Environment, []struct {
+func specifyEvalToBoolean() (*object.Environment, []struct {
 	object      object.Object
 	description string
 	expected    string
 }) {
 
-	// prep: create environment and build the function object (fn(){})
+	// prep: create environment and build a function object (fn(){})
 	env := object.NewEnvironment()
 	params := []*ast.Identifier{}
 	body := &ast.BlockStatement{
@@ -162,7 +162,7 @@ func setupEvalToBoolean() (*object.Environment, []struct {
 	tests := []struct {
 		object      object.Object
 		description string
-		expected    string //TODO: better interface{} - but then we need to specify the errormessages!
+		expected    string
 	}{
 		{TRUE, "Boolean with value true", "true"},
 		{FALSE, "Boolean with value false", "false"},

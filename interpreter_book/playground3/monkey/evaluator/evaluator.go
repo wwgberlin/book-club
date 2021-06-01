@@ -91,11 +91,11 @@ func Eval(node ast.Node, env *object.Environment) object.Object {
 		return applyFunction(function, args)
 	}
 
-	return nil
+	return NULL
 }
 
 func evalProgram(program *ast.Program, env *object.Environment) object.Object {
-	var result object.Object
+	var result object.Object = NULL
 
 	for _, statement := range program.Statements {
 		result = Eval(statement, env)
@@ -115,7 +115,7 @@ func evalBlockStatement(
 	block *ast.BlockStatement,
 	env *object.Environment,
 ) object.Object {
-	var result object.Object
+	var result object.Object = NULL
 
 	for _, statement := range block.Statements {
 		result = Eval(statement, env)
@@ -299,13 +299,7 @@ func applyFunction(fn object.Object, args []object.Object) object.Object {
 	function, ok := fn.(*object.Function)
 
 	if !ok {
-		var fnType string
-		if fn == nil {
-			fnType = "nil"
-		} else {
-			fnType = string(fn.Type())
-		}
-		return newError("not a function: %s", fnType)
+		return newError("not a function: %s", fn.Type())
 	}
 
 	if len(function.Parameters) > len(args) {

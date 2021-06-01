@@ -299,7 +299,13 @@ func applyFunction(fn object.Object, args []object.Object) object.Object {
 	function, ok := fn.(*object.Function)
 
 	if !ok {
-		return newError("not a function: %s", fn.Type())
+		var fnType string
+		if fn == nil {
+			fnType = "nil"
+		} else {
+			fnType = string(fn.Type())
+		}
+		return newError("not a function: %s", fnType)
 	}
 
 	if len(function.Parameters) > len(args) {

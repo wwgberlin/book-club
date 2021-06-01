@@ -49,7 +49,6 @@ func TestArityCallExpressions(t *testing.T) {
 	}
 }
 
-//TODO: specify error messages
 func TestDivisionByZero(t *testing.T) {
 
 	tests := []struct {

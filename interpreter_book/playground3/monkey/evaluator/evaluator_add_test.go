@@ -7,6 +7,7 @@ import (
 	"monkey/parser"
 	"monkey/token"
 
+	"runtime/debug"
 	"testing"
 )
 
@@ -48,7 +49,6 @@ func TestArityCallExpressions(t *testing.T) {
 	}
 }
 
-//TODO: specify error messages
 func TestDivisionByZero(t *testing.T) {
 
 	tests := []struct {
@@ -56,9 +56,9 @@ func TestDivisionByZero(t *testing.T) {
 		expErr bool
 		errmsg string
 	}{
-		{"3/0", true, "shame on you"},      // literally zero
-		{"-3/(1-1)", true, "shame on you"}, // evaluating to zero
-		{"0/1", false, ""},                 // regression
+		{"3/0", true, "Division by zero"},      // literally zero
+		{"-3/(1-1)", true, "Division by zero"}, // evaluating to zero
+		{"0/1", false, ""},                     // regression
 	}
 
 	for _, tt := range tests {
@@ -80,6 +80,7 @@ func testErrors(input string, ast *ast.Program, expErr bool, expMsg string, t *t
 
 	defer func() {
 		if err := recover(); err != nil {
+			debug.PrintStack()
 			t.Errorf("Evaluation panics for %q: %q", input, err)
 		}
 	}()

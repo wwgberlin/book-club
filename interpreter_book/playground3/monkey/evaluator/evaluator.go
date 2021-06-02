@@ -91,11 +91,11 @@ func Eval(node ast.Node, env *object.Environment) object.Object {
 		return applyFunction(function, args)
 	}
 
-	return nil
+	return NULL
 }
 
 func evalProgram(program *ast.Program, env *object.Environment) object.Object {
-	var result object.Object
+	var result object.Object = NULL
 
 	for _, statement := range program.Statements {
 		result = Eval(statement, env)
@@ -115,7 +115,7 @@ func evalBlockStatement(
 	block *ast.BlockStatement,
 	env *object.Environment,
 ) object.Object {
-	var result object.Object
+	var result object.Object = NULL
 
 	for _, statement := range block.Statements {
 		result = Eval(statement, env)
@@ -206,6 +206,9 @@ func evalIntegerInfixExpression(
 	case "*":
 		return &object.Integer{Value: leftVal * rightVal}
 	case "/":
+		if rightVal == 0 {
+			return newError("Division by zero")
+		}
 		return &object.Integer{Value: leftVal / rightVal}
 	case "<":
 		return nativeBoolToBooleanObject(leftVal < rightVal)
@@ -300,12 +303,12 @@ func applyFunction(fn object.Object, args []object.Object) object.Object {
 	}
 
 	if len(function.Parameters) > len(args) {
-		return newError("Not enough arguments!") 
-	} 
+		return newError("Not enough arguments!")
+	}
 
 	if len(function.Parameters) < len(args) {
-		return newError("Too many arguments!") 
-	} 
+		return newError("Too many arguments!")
+	}
 
 	extendedEnv := extendFunctionEnv(function, args)
 	evaluated := Eval(function.Body, extendedEnv)

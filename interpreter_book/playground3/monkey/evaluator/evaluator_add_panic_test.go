@@ -5,9 +5,9 @@ import (
 	"monkey/lexer"
 	"monkey/object"
 	"monkey/parser"
+	"runtime/debug"
 	"strings"
 	"testing"
-	"runtime/debug"
 )
 
 func TestPanicNotEnoughArguments(t *testing.T) {

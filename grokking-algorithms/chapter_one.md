@@ -1,6 +1,6 @@
-# Grokking Algorthims Chapter one
+# Grokking Algorithms Chapter one
 
-"An algorith is a set of instructions for accomplishing a task"
+*"An algorith is a set of instructions for accomplishing a task"*
 
 Trade offs - performance/ data structure/ which algorithm is used/ scalability/ running time/ memory
 
@@ -10,29 +10,40 @@ Trade offs - performance/ data structure/ which algorithm is used/ scalability/ 
 [comparison with linear search](https://jorgechavez.dev/2020/08/22/everything-you-need-to-know-about-binary-search-algorithm/)
 
 
+In Python
 ```python
-def binary_search (list, item):
+def binary_search(list, item):
     high = len(list) - 1
-     low = 0
-     while low <= high:
-        pivot = (high + low ) // 2
+    low = 0
+    while low <= high:
+        pivot = (high + low) // 2
         if list[pivot] == item:
             return pivot
         if list[pivot] > item:
             high = pivot - 1
         if list[pivot] < item:
             low = pivot + 1
-    return None 
-
-
+    return None
 ```
 
+In GO
 ```go
-
-
-``
-
-``prologue
+func binarySearch(input []int, element int) int {
+	high := len(input) - 1
+	low := 0
+	for low <= high {
+		pivot := (high + low) / 2
+		switch {
+		case input[pivot] == element:
+			return pivot
+		case input[pivot] > element:
+			high = pivot - 1
+		case input[pivot] < element:
+			low = pivot + 1
+		}
+	}
+	return -1
+}
 
 ```
 
@@ -49,10 +60,14 @@ def binary_search (list, item):
 
 ## Testing our algorithms
 
-[benchmarks]()
+[test driven](https://dave.cheney.net/2019/05/07/prefer-table-driven-tests)
+[benchmarks](https://dave.cheney.net/2013/06/30/how-to-write-benchmarks-in-go)
 [pprof](https://golang.org/pkg/net/http/pprof/)
 [go tools](https://pkg.go.dev/golang.org/x/tools)
 [create graphs to showcase runtime against sample size](https://github.com/Tiffilore/genetic-algorithms/blob/main/go_src/one_max/data/data.md)
 
+## Making things generic
+
+Using empty interfaces, switch statements and reflection, or use generics?
 
 [@sleepypioneer presentation about algorithmic python from pizza python](https://docs.google.com/presentation/d/1Q95Vzt5-3Ql9_chAqAeOEaWA9G5aENTmDUf4-FEst6M/edit?usp=sharing)

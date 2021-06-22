@@ -11,6 +11,18 @@ Trade offs - performance/ data structure/ which algorithm is used/ scalability/ 
 
 
 ```python
+def binary_search (list, item):
+    high = len(list) - 1
+     low = 0
+     while low <= high:
+        pivot = (high + low ) // 2
+        if list[pivot] == item:
+            return pivot
+        if list[pivot] > item:
+            high = pivot - 1
+        if list[pivot] < item:
+            low = pivot + 1
+    return None 
 
 
 ```

@@ -1,0 +1,46 @@
+# Grokking Algorthims Chapter one
+
+"An algorith is a set of instructions for accomplishing a task"
+
+Trade offs - performance/ data structure/ which algorithm is used/ scalability/ running time/ memory
+
+
+## Binary search
+
+[comparison with linear search](https://jorgechavez.dev/2020/08/22/everything-you-need-to-know-about-binary-search-algorithm/)
+
+
+```python
+
+
+```
+
+```go
+
+
+``
+
+``prologue
+
+```
+
+## Big O Notation
+
+- matters at scale / big data / number of operations
+- (preview of chapter 4) same runtime multiplied or added to falls within in the same big 0
+
+## Recursion
+
+- beautiful but often slow
+- memory mangement more complicated
+- mix of folks who write iterative first and recursive first
+
+## Testing our algorithms
+
+[benchmarks]()
+[pprof](https://golang.org/pkg/net/http/pprof/)
+[go tools](https://pkg.go.dev/golang.org/x/tools)
+[create graphs to showcase runtime against sample size](https://github.com/Tiffilore/genetic-algorithms/blob/main/go_src/one_max/data/data.md)
+
+
+[My presentation from algortithm](https://docs.google.com/presentation/d/1Q95Vzt5-3Ql9_chAqAeOEaWA9G5aENTmDUf4-FEst6M/edit?usp=sharing)

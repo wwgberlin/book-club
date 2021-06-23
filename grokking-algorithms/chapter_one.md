@@ -66,6 +66,18 @@ func binarySearch(input []int, element int) int {
 [go tools](https://pkg.go.dev/golang.org/x/tools)
 [create graphs to showcase runtime against sample size](https://github.com/Tiffilore/genetic-algorithms/blob/main/go_src/one_max/data/data.md)
 
+### The TDD cycle
+
+1. Write a test
+2. Make the compiler pass
+  - write the _minimal_ amount of code for the test to run
+3. Run the test
+  - see that it fails and check that the error message is meaningful
+4. Write enough code to make the test pass
+  - :arrow_right_hook: source control: **commit**
+5. Refactor the code and test
+  - :arrow_right_hook: source control: **amend commit + push**
+  
 ## Making things generic
 
 Using empty interfaces, switch statements and reflection, or use generics?

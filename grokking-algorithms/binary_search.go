@@ -11,7 +11,7 @@ func binarySearch(list []interface{}, element interface{}) int {
 	// if if element has type of int then call binarySearchInteger
 
 	// Or use generics?
-
+return 0
 }
 
 func binarySearchInteger(input []int, element int) int {

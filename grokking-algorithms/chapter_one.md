@@ -11,8 +11,9 @@ Trade offs - performance/ data structure/ which algorithm is used/ scalability/ 
 
 
 In Python
+```python
 def binary_search(input, item):
-    high = len(list) - 1
+    high = len(input) - 1
     low = 0
     while low <= high:
         pivot = (high + low) // 2
@@ -23,6 +24,7 @@ def binary_search(input, item):
         if input[pivot] < item:
             low = pivot + 1
     return
+```
 
 In GO
 ```go

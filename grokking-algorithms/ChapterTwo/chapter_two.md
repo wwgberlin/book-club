@@ -46,3 +46,28 @@ Arrays and linked lists are two of the most basic data structures.  There are pr
 - most languages have sorting algos built in
 - a stepping stone to quicksort 
 - not as fast as quicksort 
+
+
+## Notes
+- an array is not always an array in different programming languages?
+- how is the sort algorithm implemented in different languages?
+- an array in JavaScript can contain different types
+- not the most efficient way to implement the algo since you have to shift all the items once you pop off the smallest item 
+    - this algorithm used just to make it easy to understand?
+- tim sort?
+- to create a more efficient algorithm
+    - empty a slot? 
+    - avoid shifting the memory around?
+    - recursion? 
+    - make faster by using more memory?
+- are arrays in Go passed by value or reference?
+    - arrays have different memory box and each is a pointer to an underlying backing array
+    - value semantics 
+- protobufs use a lot of pointer semantics for arrays?
+    - stricter contract?
+    - for nil checking
+
+## To do
+- benchmarking for the different functions
+- tests
+    

@@ -2,39 +2,50 @@ package main
 
 import (
 	"fmt"
-	"os"
-	"strconv"
 )
 
-func findMin(a []int) (min int) {
-	min = a[0]
-	for _, value := range a {
-		if value < min {
-			min = value
+func findMin(a []int) int {
+	min := a[0]
+	minIndex := 0
+	for i, v := range a {
+		if v < min {
+			minIndex = i
+			min = v
 		}
 	}
-	return min
+	return minIndex
 }
 
-//func selectionSort(a []int)(sorted []int) {
+// func selectionSort(a []int)[]int {
+// 	newArr := make([]int, 0, len(a))
+// 	for _= range a {
+// 		minIndex := findMin(a)
+// 		newArr = append(newArr, a[minIndex])
+// 		a = append(a[0:minIndex], a[minIndex+1:]...)
+// 		//fmt.Println(a)
+// 		//fmt.Println(newArr)
+// 	}
+// 	return newArr
+// }
 
-//}
+func selectionSort(a []int)[]int {
+	newArr := make([]int, len(a))
+	for i, _ := range a {
+		minIndex := findMin(a)
+		newArr[i] = a[minIndex]
+		a = append(a[0:minIndex], a[minIndex+1:]...)
+	}
+	return newArr
+}
 
 func main() {
 
-	arrStr := os.Args[1:]
-    arrInt := make([]int, len(arrStr))
-    
-    for idx, i := range arrStr {
-        j, err := strconv.Atoi(i)
-        if err != nil {
-            panic(err)
-        }
-        arrInt[idx] = j
-    }
-	
+        arrInt := []int{10, 6, 2, 7, 8}
+
 	min := findMin(arrInt)
-	fmt.Println("Min: ", min)
-	//sorted := selectionSort(a)
-	//fmt.Println("Sorted: ", sorted)
+	fmt.Println("MinIndex: ", min)
+	
+	sorted := selectionSort(arrInt)
+	fmt.Println("Sorted: ", sorted)
+	
 }

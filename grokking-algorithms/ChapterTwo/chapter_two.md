@@ -69,7 +69,7 @@ Arrays and linked lists are two of the most basic data structures.  There are pr
 - swapping instead of using more memory
 
 ## To do
-[] benchmarking for the different functions
-[] tests
-[] try recursion?
+- [] benchmarking for the different functions
+- [] tests
+- [] try recursion?
     

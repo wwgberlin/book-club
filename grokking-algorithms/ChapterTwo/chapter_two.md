@@ -66,8 +66,10 @@ Arrays and linked lists are two of the most basic data structures.  There are pr
 - protobufs use a lot of pointer semantics for arrays?
     - stricter contract?
     - for nil checking
+- swapping instead of using more memory
 
 ## To do
-- benchmarking for the different functions
-- tests
+[] benchmarking for the different functions
+[] tests
+[] try recursion?
     

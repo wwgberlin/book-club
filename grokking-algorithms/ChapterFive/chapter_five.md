@@ -63,6 +63,11 @@ https://docs.python.org/3/library/stdtypes.html#dict
 
 [Implementation Details](http://www.laurentluce.com/posts/python-dictionary-implementation/)
 
+### Go
+
+Article that explains Go's implementation of hash maps:
+https://dave.cheney.net/2018/05/29/how-the-go-runtime-implements-maps-efficiently-without-generics
+
 
 ## Implementing Hash Tables
 
@@ -74,7 +79,7 @@ Ingredients:
 Functions we need:
 - constructor
 - get
-- set (needs to handle resize if needed)
+- set (if you want to optimize: needs to handle resize if needed)
 - delete
 
 ### Optimizing
@@ -94,3 +99,11 @@ To get close to O(1) performance, we have two aspects to optimize:
 - Set
 
 ## Meeting Notes
+- What does hashable mean? "Something that can be ordered"?
+- Would you ever want to resize the hash table to be smaller? Is there a use case where this makes sense or any implementation that works that way?
+- Two step hash map?
+- To handle resizing, it probably makes sense to store the number of items instead of counting it on each `set` call
+- Depending on the use case there are different things that can be optimized in a hash table.
+  - for many reads and little writes it makes sense to optimize for minimum collisions
+  - if the tables can get really big, it might be usedful to optimize the resize function so that not all keys have to be moved.
+ [Consistent Hashing](https://en.wikipedia.org/wiki/Consistent_hashing) means to use a hash function where only a fraction of the keys have to be moved after a resize.

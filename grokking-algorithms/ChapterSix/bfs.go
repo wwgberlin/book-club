@@ -1,4 +1,4 @@
-package bfs
+package main
 
 // FIFO
 type Queue struct {
@@ -28,29 +28,35 @@ type Node string
 type SimpleGraph map[Node][]Node
 
 // Where we have a specific goal (example on page 96)
-func (g SimpleGraph) BreadthFirstSearchSpecificGoal(start Node, isGoal func(Node) bool) bool {
+func (g SimpleGraph) BreadthFirstSearchSpecificGoal(start Node, isGoal func(Node) bool) []Node {
 	var q = Queue{}
+	var path []Node
 	q.enqueue(start)
 
-	var visited = []Node{}
+	visited := make(map[Node]bool)
+	predecessor := make(map[Node]Node)
 
 	for !q.isEmpty() {
 		item := q.dequeue()
-		// check if node has already been visited
-		for _, v := range visited {
-			if v == item {
+
+		if isGoal(item) {
+			for pred := item; pred != start; pred = predecessor[pred] {
+				path = append([]Node{pred}, path...)
+			}
+			path = append([]Node{start}, path...)
+			return path
+		}
+
+		for _, succ := range g[item] {
+			if visited[succ] {
 				continue
 			}
+			predecessor[succ] = item
+			q.enqueue(succ)
+			visited[succ] = true
 		}
-		// add to visited
-		visited = append(visited, item)
-		if isGoal(item) {
-			return true
-
-		}
-		q.appendToQueue(g[item])
 	}
-	return false
+	return nil
 
 }
 

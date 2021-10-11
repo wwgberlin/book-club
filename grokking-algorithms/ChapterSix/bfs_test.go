@@ -1,4 +1,4 @@
-package bfs
+package main
 
 import (
 	"testing"
@@ -20,7 +20,7 @@ func TestBreadthFirstSearchSpecificGoalExampleOne(t *testing.T) {
 
 	sg := SimpleGraph{
 		start: []Node{A, B},
-		A:     []Node{D},
+		A:     []Node{D, start},
 		B:     []Node{C, E},
 		C:     []Node{D},
 		E:     []Node{D},
@@ -28,7 +28,7 @@ func TestBreadthFirstSearchSpecificGoalExampleOne(t *testing.T) {
 	}
 
 	result := sg.BreadthFirstSearchSpecificGoal(start, isGoal)
-	if !result {
+	if len(result) != 4 {
 		t.Errorf("This test has failed!")
 	}
 }
@@ -57,7 +57,65 @@ func TestBreadthFirstSearchSpecificGoalExampleTwo(t *testing.T) {
 	}
 
 	result := sg.BreadthFirstSearchSpecificGoal(start, isGoal)
-	if !result {
+	if len(result) != 3 {
+		t.Errorf("This test has failed!")
+	}
+}
+
+func TestBreadthFirstSearchSpecificGoalNoPath(t *testing.T) {
+	start := Node("start")
+	goal := Node("end")
+
+	var isGoal = func(n Node) bool {
+		return false
+	}
+
+	A := Node("A")
+	B := Node("B")
+	C := Node("C")
+	D := Node("D")
+	E := Node("E")
+
+	sg := SimpleGraph{
+		start: []Node{A, B},
+		A:     []Node{D, start},
+		B:     []Node{C, E},
+		C:     []Node{D},
+		E:     []Node{D},
+		D:     []Node{goal},
+	}
+
+	result := sg.BreadthFirstSearchSpecificGoal(start, isGoal)
+	if result != nil {
+		t.Errorf("This test has failed!")
+	}
+}
+
+func TestBreadthFirstSearchSpecificGoalOnePathToRuleThemAll(t *testing.T) {
+	start := Node("start")
+	goal := Node("end")
+
+	var isGoal = func(n Node) bool {
+		return n == start
+	}
+
+	A := Node("A")
+	B := Node("B")
+	C := Node("C")
+	D := Node("D")
+	E := Node("E")
+
+	sg := SimpleGraph{
+		start: []Node{A, B},
+		A:     []Node{D, start},
+		B:     []Node{C, E},
+		C:     []Node{D},
+		E:     []Node{D},
+		D:     []Node{goal},
+	}
+
+	result := sg.BreadthFirstSearchSpecificGoal(start, isGoal)
+	if len(result) != 1 {
 		t.Errorf("This test has failed!")
 	}
 }
